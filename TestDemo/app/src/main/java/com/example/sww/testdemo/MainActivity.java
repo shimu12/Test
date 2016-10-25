@@ -69,13 +69,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *
      * 简易工厂模式测试
      */
     private void testFactory()
     {
-        SendFactory factory = new SendFactory();
-        Sender sender = factory.produce("mail");
+        Sender sender = SendFactory.produceMail();
         sender.Sender();
+
+        Sender sender1 = SendFactory.produceSms();
+        sender1.Sender();
     }
 
     private void initData() {

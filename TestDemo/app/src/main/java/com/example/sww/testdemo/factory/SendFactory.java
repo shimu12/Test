@@ -12,18 +12,29 @@ import com.example.sww.testdemo.server.Sender;
 
 public class SendFactory {
 
-    public Sender produce(String type)
+//    public Sender produce(String type)
+//    {
+//        if ("mail".equals(type))
+//        {
+//            return new MailSender();
+//        }else if ("smsMail".equals(type))
+//        {
+//            return new SmsSender();
+//        }else
+//        {
+//            Log.e("----send---", "----error----");
+//            return null;
+//        }
+//    }
+
+    public static Sender produceMail()
     {
-        if ("mail".equals(type))
-        {
-            return new MailSender();
-        }else if ("smsMail".equals(type))
-        {
-            return new SmsSender();
-        }else
-        {
-            Log.e("----send---", "----error----");
-            return null;
-        }
+        return new MailSender();
     }
+
+    public static Sender produceSms()
+    {
+        return new SmsSender();
+    }
+
 }
