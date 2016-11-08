@@ -1,5 +1,6 @@
 package com.example.sww.testdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.sww.testdemo.View.TestViewActivity;
+import com.example.sww.testdemo.callback.MyButton;
 import com.example.sww.testdemo.factory.SendFactory;
+import com.example.sww.testdemo.factory.SendMailFactory;
+import com.example.sww.testdemo.server.MyClickListener;
+import com.example.sww.testdemo.server.Provider;
 import com.example.sww.testdemo.server.Sender;
 
 import java.util.ArrayList;
@@ -57,16 +63,55 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 //        testRunMain();
 
-        handler.sendEmptyMessage(1);
+//        handler.sendEmptyMessage(1);
 //        initData();
         above.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+                public void onClick(View view) {
 
-                testFactory();
+//                testFactory();
+
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                startActivity(intent);
+
+//                testCustomView();
+                testScrollView();
             }
         });
+
+        MyButton myButton = new MyButton();
+
+        myButton.setOnClickListener(new MyClickListener() {
+            @Override
+            public void onClick(String s) {
+
+                test.setText(s);
+
+            }
+        });
+
+        myButton.doClick();
     }
+
+    /**
+     * 测试自定义View
+     */
+    private void testCustomView()
+    {
+        Intent intent = new Intent(this, TestViewActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 测试联动布局
+     */
+
+    private void testScrollView()
+    {
+        Intent intent = new Intent(this,ScrollActivity.class);
+        startActivity(intent);
+    }
+
 
     /**
      *
@@ -79,6 +124,17 @@ public class MainActivity extends AppCompatActivity {
 
         Sender sender1 = SendFactory.produceSms();
         sender1.Sender();
+    }
+
+    /**
+     * 抽象工厂模式
+     */
+
+    private void testAbstractFactory()
+    {
+        Provider provider = new SendMailFactory();
+        Sender sender = provider.produce();
+        sender.Sender();
     }
 
     private void initData() {

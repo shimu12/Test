@@ -14,6 +14,6 @@ public class MailSender implements Sender{
     @Override
     public void Sender() {
 
-        Log.e("------send----","this is mailSender");
+        Log.e("------send----","this is mailSender hahaha");
     }
 }

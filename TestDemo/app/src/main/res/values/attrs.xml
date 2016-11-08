@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="test_view">
+        <attr name="witdh" format="dimension"></attr>
+        <attr name="height" format="dimension"></attr>
+
+    </declare-styleable>
+</resources>
