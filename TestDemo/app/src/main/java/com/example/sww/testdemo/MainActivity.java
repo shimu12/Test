@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.sww.testdemo.View.SlowMoveActivity;
 import com.example.sww.testdemo.View.TestViewActivity;
 import com.example.sww.testdemo.callback.MyButton;
 import com.example.sww.testdemo.factory.SendFactory;
@@ -21,6 +22,8 @@ import com.example.sww.testdemo.factory.SendMailFactory;
 import com.example.sww.testdemo.server.MyClickListener;
 import com.example.sww.testdemo.server.Provider;
 import com.example.sww.testdemo.server.Sender;
+import com.example.sww.testdemo.ui.DetailPlayer;
+import com.example.sww.testdemo.ui.TextInputLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,12 +73,16 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
 //                testFactory();
-
-//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//                startActivity(intent);
-
+//                testExpandText();
+//                testBanner();
 //                testCustomView();
                 testScrollView();
+//                testInput();
+//                testBottomView();
+//                testBackMove();
+//                    testSlowMove();
+//                ScrollOrRecycle();
+
             }
         });
 
@@ -92,6 +99,58 @@ public class MainActivity extends AppCompatActivity {
 
         myButton.doClick();
     }
+
+    private void ScrollOrRecycle()
+    {
+//        Intent intent = new Intent(this, ScrollRecycleActivity.class);
+        Intent intent = new Intent(this, DetailPlayer.class);
+
+        startActivity(intent);
+    }
+
+    private void testExpandText()
+    {
+        Intent intent = new Intent(this, CustomExpandTextActivity.class);
+        startActivity(intent);
+    }
+
+    private void testSlowMove()
+    {
+        Intent intent = new Intent(this, SlowMoveActivity.class);
+        startActivity(intent);
+    }
+
+    private void testBanner()
+    {
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 测试输入提示语
+     */
+    private void testInput(){
+
+        Intent intent = new Intent(this, TextInputLayoutActivity.class);
+        startActivity(intent);
+    }
+
+    private void testBottomView()
+    {
+        Intent intent = new Intent(this, BottomActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 测试背景移动
+     */
+    private void testBackMove()
+    {
+        Intent intent = new Intent(this, BackScrollActivity.class);
+        startActivity(intent);
+    }
+
+
 
     /**
      * 测试自定义View

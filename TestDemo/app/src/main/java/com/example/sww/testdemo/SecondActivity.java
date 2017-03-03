@@ -9,8 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.example.sww.testdemo.scroll.ClipViewPager;
 import com.example.sww.testdemo.scroll.RecyclingPagerAdapter;
 import com.example.sww.testdemo.scroll.ScalePageTransformer;
 
@@ -23,10 +25,13 @@ import butterknife.ButterKnife;
 public class SecondActivity extends AppCompatActivity {
 
     @Bind(R.id.view_pager)
-    ViewPager viewPager;
+    ClipViewPager viewPager;
     @Bind(R.id.activity_second)
     RelativeLayout activitySecond;
     List<Integer> list;
+    @Bind(R.id.view_pager_out)
+    LinearLayout viewPagerOut;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +40,13 @@ public class SecondActivity extends AppCompatActivity {
 
         initData();
 
+//        viewPager.setPageTransformer(true, new DepthPageTransformer());
         viewPager.setPageTransformer(true, new ScalePageTransformer());
         viewPager.setOffscreenPageLimit(5);
-//        viewPager.setAdapter(new MyAdapter(this, list));
-        viewPager.setAdapter(new TestAdapter(this, list));
+        viewPager.setAdapter(new MyAdapter(this, list));
+//        viewPager.setAdapter(new TestAdapter(this, list));
 
-        activitySecond.setOnTouchListener(new View.OnTouchListener() {
+        viewPagerOut.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 return viewPager.dispatchTouchEvent(motionEvent);
@@ -48,8 +54,7 @@ public class SecondActivity extends AppCompatActivity {
         });
     }
 
-    private void initData()
-    {
+    private void initData() {
         list = new ArrayList<>();
         list.add(R.mipmap.style_dny);
         list.add(R.mipmap.style_dzh);
@@ -62,13 +67,13 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-    class TestAdapter extends PagerAdapter{
+    class TestAdapter extends PagerAdapter {
 
         Context context;
         List<Integer> list;
 
-        public TestAdapter(Context context,List<Integer> list)
-        {
+
+        public TestAdapter(Context context, List<Integer> list) {
 
             this.context = context;
             this.list = list;
@@ -78,12 +83,12 @@ public class SecondActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
 
-            ImageView view = new ImageView(context);
-            view.setImageResource(list.get(position));
+//            ImageView view = new ImageView(context);
+//            view.setImageResource(list.get(position));
 
-//            RelativeLayout view= (RelativeLayout) getLayoutInflater().inflate(R.layout.image_item, null);
-//            ImageView imageView = (ImageView) view.findViewById(R.id.image);
-//            imageView.setImageResource(list.get(position));
+            RelativeLayout view = (RelativeLayout) getLayoutInflater().inflate(R.layout.image_item, null);
+            ImageView imageView = (ImageView) view.findViewById(R.id.image);
+            imageView.setImageResource(list.get(position));
 
             view.setTag(position);
             container.addView(view);
@@ -110,14 +115,12 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-
-    class MyAdapter extends RecyclingPagerAdapter{
+    class MyAdapter extends RecyclingPagerAdapter {
 
         List<Integer> list;
         Context context;
 
-        public MyAdapter(Context context, List<Integer> list)
-        {
+        public MyAdapter(Context context, List<Integer> list) {
             this.list = list;
             this.context = context;
 

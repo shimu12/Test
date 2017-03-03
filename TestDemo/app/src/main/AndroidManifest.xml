@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sww.testdemo">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.sww.testdemo"
+    tools:overrideLibrary="com.q42.android.scrollingimageview">
+
+    <!-- 请求访问网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 请求访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+     
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +28,19 @@
         </activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".View.TestViewActivity" />
-        <activity android:name=".ScrollActivity"></activity>
+        <activity android:name=".ScrollActivity" />
+        <activity android:name=".ui.TextInputLayoutActivity" />
+        <activity android:name=".BottomActivity" />
+        <activity android:name=".BackScrollActivity" />
+        <activity android:name=".View.SlowMoveActivity" />
+        <activity android:name=".ExpandTextActivity" />
+        <activity android:name=".CustomExpandTextActivity" />
+        <activity android:name=".ScrollRecycleActivity" />
+        <activity
+            android:name=".ui.DetailPlayer"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".coordinate.CoordinateLayoutActivity"></activity>
     </application>
 
 </manifest>

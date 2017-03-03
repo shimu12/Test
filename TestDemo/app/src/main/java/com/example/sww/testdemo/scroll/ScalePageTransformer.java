@@ -7,10 +7,10 @@ import android.view.View;
 /**
  * Created by HanHailong on 15/9/27.
  */
-public class ScalePageTransformer implements ViewPager.PageTransformer {
+public class  ScalePageTransformer implements ViewPager.PageTransformer {
 
-    public static final float MAX_SCALE = 1.2f;
-    public static final float MIN_SCALE = 0.6f;
+    public static final float MAX_SCALE = 1.5f;
+    public static final float MIN_SCALE = 0.8f;
 
     @Override
     public void transformPage(View page, float position) {

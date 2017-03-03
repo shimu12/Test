@@ -1,6 +1,7 @@
 package com.example.sww.testdemo;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,7 +49,12 @@ public class ScrollActivity extends AppCompatActivity {
         recycle.setLayoutManager(layoutManager);
         MyAdapter adapter = new MyAdapter(stringList,this);
         recycle.setAdapter(adapter);
+//        recycle.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
+//        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+////        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.example_appwidget_preview));
+//        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.item_divder));
+//        recycle.addItemDecoration(itemDecoration);
     }
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHoloder>
@@ -65,8 +71,15 @@ public class ScrollActivity extends AppCompatActivity {
         @Override
         public ViewHoloder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            View view = getLayoutInflater().inflate(R.layout.item_layout, null);
+            View view = getLayoutInflater().inflate(R.layout.item_layout, parent,false);
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    recycle.scrollToPosition(0);
+                }
+            });
 
             return new ViewHoloder(view);
         }
