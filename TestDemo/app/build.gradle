@@ -41,7 +41,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.github.Q42:AndroidScrollingImageView:1.2'
     compile 'com.flaviofaria:kenburnsview:1.0.7'
-    compile project(path: ':lib')
     compile 'com.github.CarGuo:GSYVideoPlayer:v1.4.7'
 }
 
