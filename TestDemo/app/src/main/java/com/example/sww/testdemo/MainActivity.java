@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //        initData();
         above.setOnClickListener(new View.OnClickListener() {
             @Override
-                public void onClick(View view) {
+            public void onClick(View view) {
 
 //                testFactory();
 //                testExpandText();
@@ -100,28 +100,24 @@ public class MainActivity extends AppCompatActivity {
         myButton.doClick();
     }
 
-    private void ScrollOrRecycle()
-    {
+    private void ScrollOrRecycle() {
 //        Intent intent = new Intent(this, ScrollRecycleActivity.class);
         Intent intent = new Intent(this, DetailPlayer.class);
 
         startActivity(intent);
     }
 
-    private void testExpandText()
-    {
+    private void testExpandText() {
         Intent intent = new Intent(this, CustomExpandTextActivity.class);
         startActivity(intent);
     }
 
-    private void testSlowMove()
-    {
+    private void testSlowMove() {
         Intent intent = new Intent(this, SlowMoveActivity.class);
         startActivity(intent);
     }
 
-    private void testBanner()
-    {
+    private void testBanner() {
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }
@@ -129,14 +125,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 测试输入提示语
      */
-    private void testInput(){
+    private void testInput() {
 
         Intent intent = new Intent(this, TextInputLayoutActivity.class);
         startActivity(intent);
     }
 
-    private void testBottomView()
-    {
+    private void testBottomView() {
         Intent intent = new Intent(this, BottomActivity.class);
         startActivity(intent);
     }
@@ -144,19 +139,16 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 测试背景移动
      */
-    private void testBackMove()
-    {
+    private void testBackMove() {
         Intent intent = new Intent(this, BackScrollActivity.class);
         startActivity(intent);
     }
 
 
-
     /**
      * 测试自定义View
      */
-    private void testCustomView()
-    {
+    private void testCustomView() {
         Intent intent = new Intent(this, TestViewActivity.class);
         startActivity(intent);
     }
@@ -165,19 +157,16 @@ public class MainActivity extends AppCompatActivity {
      * 测试联动布局
      */
 
-    private void testScrollView()
-    {
-        Intent intent = new Intent(this,ScrollActivity.class);
+    private void testScrollView() {
+        Intent intent = new Intent(this, ScrollActivity.class);
         startActivity(intent);
     }
 
 
     /**
-     *
      * 简易工厂模式测试
      */
-    private void testFactory()
-    {
+    private void testFactory() {
         Sender sender = SendFactory.produceMail();
         sender.Sender();
 
@@ -185,12 +174,12 @@ public class MainActivity extends AppCompatActivity {
         sender1.Sender();
     }
 
+
     /**
      * 抽象工厂模式
      */
 
-    private void testAbstractFactory()
-    {
+    private void testAbstractFactory() {
         Provider provider = new SendMailFactory();
         Sender sender = provider.produce();
         sender.Sender();
