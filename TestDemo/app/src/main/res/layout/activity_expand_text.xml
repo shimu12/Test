@@ -23,33 +23,5 @@
             android:textColor="#333333"
             android:textSize="18sp" />
 
-
-        <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/expand_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            expandableTextView:animDuration="200"
-            expandableTextView:maxCollapsedLines="4">
-
-            <TextView
-                android:id="@id/expandable_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#666666"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@id/expand_collapse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:textSize="16sp"
-                android:padding="16dp" />
-        </com.ms.square.android.expandabletextview.ExpandableTextView>
-
     </LinearLayout>
 </ScrollView>
