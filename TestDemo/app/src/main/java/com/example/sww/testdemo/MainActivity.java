@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,17 +20,26 @@ import com.example.sww.testdemo.View.TestViewActivity;
 import com.example.sww.testdemo.callback.MyButton;
 import com.example.sww.testdemo.factory.SendFactory;
 import com.example.sww.testdemo.factory.SendMailFactory;
+import com.example.sww.testdemo.mode.ResultBean;
+import com.example.sww.testdemo.net.HttpMethod;
 import com.example.sww.testdemo.server.MyClickListener;
 import com.example.sww.testdemo.server.Provider;
 import com.example.sww.testdemo.server.Sender;
 import com.example.sww.testdemo.ui.DetailPlayer;
 import com.example.sww.testdemo.ui.TextInputLayoutActivity;
+import com.example.sww.testdemo.util.ToastUtil;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import rx.Subscriber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,7 +108,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myButton.doClick();
+
+        login();
     }
+
+
+    private void login(){
+        String name = "shiweiwei";
+        String password = "123456";
+
+        HttpMethod.getInstance().login(name, password, new Subscriber<retrofit2.Response<ResponseBody>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(retrofit2.Response<ResponseBody> o) {
+
+                String result = "";
+                try {
+                    result = o.body().string();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Gson gson = new Gson();
+                ResultBean bean = gson.fromJson(result, ResultBean.class);
+                ToastUtil.showToast(MainActivity.this, bean.getMessage());
+
+                Log.i("result", result);
+
+            }
+        });
+    }
+
 
     private void ScrollOrRecycle() {
 //        Intent intent = new Intent(this, ScrollRecycleActivity.class);
